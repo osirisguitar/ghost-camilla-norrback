@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{!-- Page Meta --}}
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+
+    {{!-- Mobile Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{!-- Brand icon --}}
+    <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}} nav-closed">
+    <header class="page-header" style="background-image: url({{@blog.cover}})">
+        <h1><a href="/">{{@blog.title}}</a></h1>
+        {{#tag}}{{name}}{{/tag}}
+    </header>
+    <div class="content-wrapper">
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        <main>{{{body}}}</main>
+        <aside>
+            <h2>Ämnen</h2>
+            <p><tags>
+              {{#get "tags" limit="all"}}
+                {{#foreach tags}}
+                  <a href="{{url}}">{{name}}</a>
+                {{/foreach}}
+              {{/get}}
+            </tags></p>
+            {{#get "users" id="1"}}
+              {{#foreach users}}
+            <h2>Följ oss</h2>
+            <p>
+              {{#if twitter}}<a class="icon-twitter" href="{{twitter_url}}" target="_blank"></a>{{/if}}
+              {{#if facebook}}<a class="icon-facebook" href="{{facebook_url}}" target="_blank"></a>{{/if}}
+            </p>
+            <h2>{{name}}</h2>
+            <p><img src="{{image}}"></p>
+            <p>{{bio}}</p>
+              {{/foreach}}
+            {{/get}}
+            <h2>Om bloggen</h2>
+            <p>{{@blog.description}}</p>
+        </aside>
+    </div>
+
+    {{!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection --}}
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+    {{!-- Fitvids makes video embeds responsive and awesome --}}
+    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+    {{!-- The main JavaScript file for Casper --}}
+    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+</body>
+</html>
