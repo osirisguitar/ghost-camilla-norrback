@@ -24,7 +24,7 @@
     {{ghost_head}}
 </head>
 <body class="{{body_class}} nav-closed">
-    <header class="page-header" style="background-image: url({{@blog.cover}})">
+    <header class="page-header" style="background-image: url({{@blog.cover_image}})">
         <h1><a href="/">{{@blog.title}}</a></h1>
         {{#tag}}{{name}}{{/tag}}
     </header>
@@ -48,7 +48,7 @@
               {{#if facebook}}<a class="icon-facebook" href="{{facebook_url}}" target="_blank"></a>{{/if}}
             </p>
             <h2>{{name}}</h2>
-            <p><img src="{{image}}"></p>
+            <p><img src="{{image_url}}"></p>
             <p>{{bio}}</p>
               {{/foreach}}
             {{/get}}
