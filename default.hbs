@@ -7,7 +7,6 @@
 
     {{!-- Page Meta --}}
     <title>{{meta_title}}</title>
-    <meta name="description" content="{{meta_description}}" />
 
     {{!-- Mobile Meta --}}
     <meta name="HandheldFriendly" content="True" />
@@ -24,8 +23,8 @@
     {{ghost_head}}
 </head>
 <body class="{{body_class}} nav-closed">
-    <header class="page-header" style="background-image: url({{@blog.cover_image}})">
-        <h1><a href="/">{{@blog.title}}</a></h1>
+    <header class="page-header" style="background-image: url({{@site.cover_image}})">
+        <h1><a href="/">{{@site.title}}</a></h1>
         {{#tag}}{{name}}{{/tag}}
     </header>
     <div class="content-wrapper">
@@ -40,7 +39,7 @@
                 {{/foreach}}
               {{/get}}
             </tags></p>
-            {{#get "users" id="1"}}
+            {{#get "authors" id="1"}}
               {{#foreach users}}
             <h2>Följ oss</h2>
             <p>
@@ -53,7 +52,7 @@
               {{/foreach}}
             {{/get}}
             <h2>Om bloggen</h2>
-            <p>{{@blog.description}}</p>
+            <p>{{@site.description}}</p>
         </aside>
     </div>
 
